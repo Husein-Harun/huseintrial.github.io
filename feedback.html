@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <link rel="stylesheet" href="style1.css">
+  </head>
+  <body>
+    <header>
+      <h1>Feedback Form</h1>
+  </header>
+    
+  <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li class="dropdown">
+          <a href="#">Dropdown Option</a>
+          <ul>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+          </ul>
+        </li>
+    </ul>
+    <button id="mode-toggle">CHANGE BACKGROUND COLOUR</button>
+  </nav>
+<main>
+    <form>
+      <label for="feedback">Please leave your feedback:</label><br>
+      <textarea id="feedback" name="feedback" rows="5" cols="40"></textarea><br>
+
+      <label for="rating">Rate your experience:</label><br>
+      <input type="radio" id="1star" name="rating" value="1">
+      <label for="1star">1 star</label>
+      <input type="radio" id="2star" name="rating" value="2">
+      <label for="2star">2 stars</label>
+      <input type="radio" id="3star" name="rating" value="3">
+      <label for="3star">3 stars</label>
+      <input type="radio" id="4star" name="rating" value="4">
+      <label for="4star">4 stars</label>
+      <input type="radio" id="5star" name="rating" value="5">
+      <label for="5star">5 stars</label><br>
+
+      <label for="email">Please enter your email:</label><br>
+      <input type="email" id="email" name="email"><br>
+
+      <button type="button" onclick="showResults()">Submit</button>
+    </form>
+  </main>
+
+    <script>
+      function showResults() {
+        const feedbackText = document.getElementById("feedback").value;
+        const ratingValue = document.querySelector('input[name="rating"]:checked').value;
+        const emailValue = document.getElementById("email").value;
+        
+        let numWords = 0;
+        if (feedbackText.trim() !== "") {
+          numWords = feedbackText.split(" ").length;
+        }
+
+        let emailValid = false;
+        if (emailValue !== "") {
+          const emailRegex = /^\S+@\S+\.\S+$/;
+          emailValid = emailRegex.test(emailValue);
+        }
+
+        alert(`Number of words entered: ${numWords}\nEmail format correct: ${emailValid}\nRating: ${ratingValue}`);
+      }
+    </script>
+    <footer>
+      <p>&copy; 2023 My Personal Webpage</p>
+  </footer>
+  <script src="script.js"></script>
+  </body>
+  
+</html>
